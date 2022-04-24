@@ -20,9 +20,9 @@ Singleton.py：单例函数
 
 ## 2. 仿真软件
 ### 1. 软件框架  
-![GUI view](.md\gui_view.png)  
+![GUI view](.md/gui_view.png)  
 皮带布局示意图  
-![infrastructure](.md\infrastructure.png)  
+![infrastructure](.md/infrastructure.png)  
 软件框架示意图
 
 ### 2. 软件环境  
