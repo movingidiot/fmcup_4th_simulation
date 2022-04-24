@@ -1,0 +1,57 @@
+parcels:
+  # mm，包裹最小尺寸
+  min_size: 100
+
+  # mm，包裹最大尺寸
+  max_size: 400
+
+motor:
+  # 皮带行数，平行于包裹前进方向为行
+  row: 10
+  # 皮带列数，垂直于包裹前进方向为列
+  column: 9
+
+  # mm，单个分离皮带高度，垂直于包裹前进方向
+  height: 100
+
+  # mm，单个分离皮带宽度，平行于包裹前进方向
+  width: 400
+
+  # mm/s，进料皮带运行速度，分离皮带默认运行速度，直通'straight'模式下出料皮带的运行速度
+  default_speed: 1000
+
+  # mm/s，分离皮带最大运行速度，分离'separate'模式下出料皮带的运行速度
+  max_speed: 2500
+
+  # mm，进料皮带长度，平行于包裹前进方向
+  in_length: 3600
+
+  # mm，包裹生成缓冲区长度，平行于包裹前进方向，包裹生成算法中包裹旋转矩形中心点在x方向上的边界，应小于进料皮带长度in_length
+  gen_length: 3000
+
+  # mm，出料皮带长度
+  out_length: 2000
+
+
+sim:
+  # s，调用控制算法后到改变分离皮带速度的控制延时
+  control_period: 0.1
+
+  # s，改变分离皮带速度后到下一次调用控制算法的延时
+  get_info_period: 0.1
+
+  # parcels/s，包裹生成速度
+  generate_rate: 3
+
+  # s，包裹输出最小时间间隔
+  min_parcel_out_interval: 0.16
+
+  # straight or separate，直通或者分离模式
+  mode: separate
+#  mode: straight
+
+  # mm/pixel，实际长度与GUI像素比例
+  scale: 5
+
+
+
