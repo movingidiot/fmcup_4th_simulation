@@ -53,5 +53,5 @@ class SeparateConfig(object):
 
 
 if __name__ == '__main__':
-    config = SeparatorConfig()
+    config = SeparateConfig()
     print(config)

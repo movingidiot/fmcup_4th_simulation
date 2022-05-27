@@ -170,6 +170,19 @@ class Info(object):
         for p in self.parcels:
             print(p.to_string())
 
+    def is_last_parcel_out_gen_area(self):
+        """
+        判断包裹列表是否都完全离开包裹生成区
+        :return: True:所有包裹都离开包裹生成区；False：还有包裹未离开包裹生成区
+        """
+        if len(self.parcels) == 0:
+            return True
+        else:
+            for parcel in self.parcels:
+                if parcel.rrect.get_min_x() < self.config.motor_gen_length:
+                    return False
+            return True
+
 
 if __name__ == '__main__':
     pass

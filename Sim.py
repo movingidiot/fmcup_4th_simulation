@@ -241,10 +241,21 @@ class GenThread(threading.Thread):
         # 计算包裹生成算法的超时
         timeout = 1. * self.config.motor_gen_length / self.config.motor_default_speed
 
+        start_time = cv2.getTickCount()
         # 以timeout为周期循环在包裹生成缓冲区生成包裹
         while True:
             # 调用包裹生成算法
             parcels = self.generator.generate(timeout)
+
+            # 判断已有的包裹是否都离开包裹生成区
+            while not Sim().info.is_last_parcel_out_gen_area():
+                time.sleep(0.05)
+
+            # 保证固定时间周期更新包裹
+            use_time = (cv2.getTickCount() - start_time) / cv2.getTickFrequency()
+            if use_time < timeout:
+                time.sleep(timeout - use_time)
+            start_time = cv2.getTickCount()
 
             # 将生成的包裹更新到包裹生成缓冲区中
             with InfoLock().lock:

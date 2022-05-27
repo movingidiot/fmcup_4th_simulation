@@ -48,7 +48,7 @@ sim:
 
   # straight or separate，直通或者分离模式
   mode: separate
-  # mode: straight
+#  mode: straight
 
   # mm/pixel，实际长度与GUI像素比例
   scale: 5

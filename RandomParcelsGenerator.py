@@ -32,7 +32,7 @@ class RandomParcelsGenerator(object):
     def generate(self, timeout):
         """
         随机包裹生成算法
-        :param timeout: 包裹生成超时
+        :param timeout: 包裹生成超时,秒
         :return: parcels list，
         """
         parcels = []
@@ -52,7 +52,8 @@ class RandomParcelsGenerator(object):
             # 重叠标记
             is_overlap = False
             # 判断旋转矩形框是否越界, 如果没有越界
-            if rrect.get_min_x() >= 0 and rrect.get_max_x() < self.config.motor_gen_length - self.config.parcels_max_size and rrect.get_min_y() >= 0 and rrect.get_max_y() < self.config.motor_row * self.config.motor_height - 1:
+            if rrect.get_min_x() >= 0 and rrect.get_max_x() < self.config.motor_gen_length and rrect.get_min_y() >= 0 and rrect.get_max_y() < self.config.motor_row * self.config.motor_height - 1:
+            # if rrect.get_min_x() >= 0 and rrect.get_max_x() < self.config.motor_gen_length - self.config.parcels_max_size and rrect.get_min_y() >= 0 and rrect.get_max_y() < self.config.motor_row * self.config.motor_height - 1:
                 # 判断旋转矩形是否与已生成的包裹旋转矩形框重叠
                 for parcel in parcels:
                     is_overlap = JudgeOverlap.is_overlap(parcel.rrect, rrect)
@@ -68,9 +69,9 @@ class RandomParcelsGenerator(object):
                     parcels.append(p)
 
         # 生成此次包裹的耗时小于timeout，线程暂停至timeout再返回生成的包裹列表
-        use_time = (cv2.getTickCount() - start) / cv2.getTickFrequency()
-        if use_time < timeout:
-            time.sleep(timeout - use_time)
+        # use_time = (cv2.getTickCount() - start) / cv2.getTickFrequency()
+        # if use_time < timeout:
+        #     time.sleep(timeout - use_time)
         return parcels
 
 
